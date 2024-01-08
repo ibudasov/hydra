@@ -1,0 +1,5 @@
+replicaCount: 1
+exposedIngressPort: 80
+applicationImage: ibudasov/shortener:latest
+publicApiPathPrefix: /public
+debugModeForDevelopment: true

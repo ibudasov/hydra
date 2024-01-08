@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-app-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app-pod: {{ .Release.Name }}-pod
+  template:
+    metadata:
+      labels:
+        app-pod: {{ .Release.Name }}-pod
+    spec:
+        containers:
+        - name: redis-container # is here only for testing purposes. In prod it should be a separate managed service, somewhere in public cloud
+          image: redis:latest
+          ports:
+          - containerPort: 6379
+            name: redis-port
+        - name: app-container
+          image: {{ .Values.applicationImage }} 
+          env:
+            {{- if .Values.debugModeForDevelopment }}
+            - name: CIR_DEBUG
+              value: "true"
+            {{- end }}
+            - name: CIR_REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: connection-url
+          ports:
+          - containerPort: 8000 # this is the port exposed by the container
+            name: app-port
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3

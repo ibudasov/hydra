@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: {{ .Release.Name }}-podmonitor
+  namespace: {{ .Release.Namespace }}
+  labels:
+    prometheus: main
+spec:
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-pod
+  podMetricsEndpoints:
+    - port: app-port
+      path: /metrics

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: {{ .Release.Name }}-service
+spec:
+  selector:
+    app-pod: {{ .Release.Name }}-pod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: app-port
