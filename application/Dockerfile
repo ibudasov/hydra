@@ -8,10 +8,16 @@ RUN npm i
 
 COPY . .
 
-EXPOSE 8000
+
 
 FROM base as production
 
 ENV NODE_PATH=./build
 
 RUN npm run build
+
+
+
+EXPOSE 8000
+
+CMD ["npm", "run", "dev"]  
