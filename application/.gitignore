@@ -1,0 +1,10 @@
+# gitignore file gor a node.js express application
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
