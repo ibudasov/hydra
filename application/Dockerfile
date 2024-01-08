@@ -8,8 +8,7 @@ RUN npm i
 
 COPY . .
 
-
-
+EXPOSE 8000
 
 FROM base as production
 
