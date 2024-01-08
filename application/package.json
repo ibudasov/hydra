@@ -4,6 +4,12 @@
   "description": "a simple url shortener",
   "main": "index.js",
   "scripts": {
+    "deploy-build-image": "docker build -t shortener . --platform=linux/amd64",
+    "deploy-authenticate": "docker login",
+    "deploy-tag": "docker tag shortener:latest ibudasov/shortener:latest",
+    "deploy-push": "docker push ibudasov/shortener:latest",
+    "deploy": "npm run deploy-build-image && npm run deploy-authenticate && npm run deploy-tag && npm run deploy-push",
+
     "start": "NODE_PATH=./build node build/index.js",
     "build": "tsc -p .",
     "dev": "nodemon src/index.ts"
