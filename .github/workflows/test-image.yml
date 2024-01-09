@@ -19,7 +19,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd application && docker-compose up -d
+        cd application  
+        docker-compose up -d
 
     - name: End-to-end tests testing
       run: |
