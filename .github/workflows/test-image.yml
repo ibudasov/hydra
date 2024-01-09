@@ -22,4 +22,10 @@ jobs:
         cd application && docker-compose up -d
 
     - name: End-to-end tests testing
-      run: "sleep 5; curl localhost:8000;"
+      run: |
+        sleep 5 # wait for the application to start
+        curl localhost:8000
+        curl localhost:8000/health
+        curl localhost:8000/metrics
+        curl localhost:8000/docs
+        curl localhost:8000/public/v1/urls
