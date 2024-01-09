@@ -1,0 +1,25 @@
+name: Test Image
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        cd application && docker-compose up -d
+
+    - name: End-to-end tests testing
+      run: "sleep 5; curl localhost:8000;"
