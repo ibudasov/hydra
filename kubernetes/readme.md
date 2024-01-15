@@ -14,7 +14,8 @@ helm upgrade --install ingress-nginx ingress-nginx \
 ```sh
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
-helm install -f prometheus.yaml prometheus prometheus-community/kube-prometheus-stack
+helm install prometheus prometheus-community/kube-prometheus-stack
+helm upgrade --install -f values-prometheus.yaml prometheus prometheus-community/kube-prometheus-stack
 ```
 
 ## Install
