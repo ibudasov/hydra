@@ -8,6 +8,15 @@ This repo also creates a VPC and subnet for the GKE cluster. This is not require
 
 ```sh
 gcloud components install gke-gcloud-auth-plugin
+
+# verify it
+gke-gcloud-auth-plugin --version
+
+# open a new terminal session and verify it again
+gke-gcloud-auth-plugin --version
+
+# add PATH if the installation did not work
+brew info google-cloud-sdk
 ```
 
 ## Use
