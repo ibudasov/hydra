@@ -1,5 +1,5 @@
 replicaCount: 1
 exposedIngressPort: 80
-applicationImage: ibudasov/shortener:latest
+applicationImage: ibudasov/hydra:latest
 publicApiPathPrefix: /public
 debugModeForDevelopment: true

@@ -25,7 +25,7 @@ helm upgrade --install -f values-prometheus.yaml prometheus prometheus-community
 kubectl create secret generic redis-secret --from-literal=connection-url='redis://localhost:6379'
 
 # install upon configured cluster
-helm install shortener .
+helm install hydra .
 
 # get the IP of ingress 
 kubectl get ingress

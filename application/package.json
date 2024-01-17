@@ -1,13 +1,13 @@
 {
-  "name": "shortener",
+  "name": "hydra",
   "version": "1.0.0",
-  "description": "a simple url shortener",
+  "description": "a simple url hydra",
   "main": "index.js",
   "scripts": {
-    "deploy-build-image": "docker build -t shortener . --platform=linux/amd64",
+    "deploy-build-image": "docker build -t hydra . --platform=linux/amd64",
     "deploy-authenticate": "docker login",
-    "deploy-tag": "docker tag shortener:latest ibudasov/shortener:latest",
-    "deploy-push": "docker push ibudasov/shortener:latest",
+    "deploy-tag": "docker tag hydra:latest ibudasov/hydra:latest",
+    "deploy-push": "docker push ibudasov/hydra:latest",
     "deploy": "npm run deploy-build-image && npm run deploy-authenticate && npm run deploy-tag && npm run deploy-push",
     "start": "NODE_PATH=./build node build/index.js",
     "build": "tsc -p .",
